@@ -186,3 +186,40 @@ footer .t{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var
 .fine{margin-top:44px;padding-top:20px;border-top:1px solid var(--hair);color:var(--soft);font-size:13.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media(prefers-reduced-motion:reduce){*{transition-duration:.001ms!important;animation-duration:.001ms!important}}
+/* ── skip link ───────────────────────────────────────── */
+.skip{
+    position:absolute;left:-9999px;top:0;z-index:100;
+    background:var(--ink);color:var(--paper);padding:12px 18px;font-size:14px;
+}
+.skip:focus{left:0}
+
+/* ── questions ───────────────────────────────────────── */
+.qa{border-top:1px solid var(--hair)}
+.qa details{border-bottom:1px solid var(--hair)}
+.qa summary{
+    list-style:none;cursor:pointer;padding:20px 44px 20px 0;position:relative;
+    font-family:var(--serif);font-size:clamp(18px,2vw,22px);line-height:1.2;
+    font-variation-settings:"SOFT" 30,"WONK" 1;
+}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{
+    content:"";position:absolute;right:6px;top:50%;width:13px;height:13px;
+    border-right:1.5px solid var(--accent);border-bottom:1.5px solid var(--accent);
+    transform:translateY(-70%) rotate(45deg);transition:transform .25s ease;
+}
+.qa details[open] summary::after{transform:translateY(-20%) rotate(-135deg)}
+.qa summary:hover{color:var(--accent)}
+.qa details p{
+    margin:0 0 22px;color:var(--soft);font-size:16.5px;max-width:64ch;
+}
+
+/* ── contact ─────────────────────────────────────────── */
+.contact-list p{margin:0;border-top:1px solid var(--hair);padding:14px 0;display:flex;gap:16px;flex-wrap:wrap}
+.contact-list p:last-child{border-bottom:1px solid var(--hair)}
+.contact-list .t{
+    flex:0 0 130px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--soft);padding-top:4px;
+}
+
+/* keep the 404 page centred */
+.oops{min-height:70svh;display:flex;flex-direction:column;justify-content:center}
