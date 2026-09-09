@@ -4,7 +4,7 @@
        change the url below to url("hero.jpg"). Landscape, at least
        1800px wide, and ideally something with air on the left where
        the headline sits. Everything else adapts.                      */
-    --hero:url("hero.jpg");
+    --hero:url("assets/hero.jpg");
 
     --paper:#EDEAE3;      /* warm limestone */
     --paper-2:#F6F4EF;
