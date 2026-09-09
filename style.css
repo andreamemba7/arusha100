@@ -1,0 +1,180 @@
+:root{
+    /* ── SWAP THIS ONE LINE for the real hero photograph ───────────────
+       Put your own frame of Arusha in the same folder as this file and
+       change the url below to url("hero.jpg"). Landscape, at least
+       1800px wide, and ideally something with air on the left where
+       the headline sits. Everything else adapts.                      */
+    --hero:url("hero.jpg");
+
+    --paper:#EDEAE3;      /* warm limestone */
+    --paper-2:#F6F4EF;
+    --ink:#23211E;
+    --soft:#6B655D;
+    --accent:#A83217;     /* printed red */
+    --hair:rgba(35,33,30,.14);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+    --gut:clamp(20px,5vw,72px);
+    --max:1180px;
+    --navh:clamp(62px,7vw,84px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);font-size:17px;line-height:1.65;font-weight:300;
+    -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+
+h1,h2,h3{font-family:var(--serif);font-weight:400;margin:0;line-height:1.02;letter-spacing:-.015em;font-variation-settings:"SOFT" 30,"WONK" 1}
+h2{font-size:clamp(28px,4.4vw,46px);line-height:1.06}
+h3{font-size:clamp(20px,2.2vw,25px);line-height:1.14}
+p{margin:0 0 1.1em}
+.lede{color:var(--soft);max-width:56ch;font-size:clamp(16px,1.7vw,19px)}
+.tag{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-family:var(--sans);font-weight:500}
+.fix{color:var(--accent);border-bottom:1px dotted var(--accent);font-style:italic}
+
+/* ── nav ─────────────────────────────────────────────── */
+.nav{
+    position:sticky;top:0;z-index:50;
+    background:transparent;
+    border-bottom:1px solid transparent;
+    transition:background .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+.nav .bar{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    height:var(--navh);
+}
+.nav .logo{font-family:var(--serif);font-size:21px;white-space:nowrap}
+.nav .logo span{color:var(--accent)}
+.nav .links{display:flex;gap:clamp(14px,2.4vw,26px);font-size:14px;color:var(--ink)}
+.nav .links a{padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.nav .links a:hover{color:var(--paper-2);border-bottom-color:var(--accent)}
+/* Once you scroll off the hero the bar needs its own ground, or the
+   links sit on top of the photograph and become unreadable. */
+.nav.stuck{
+    background:rgba(237,234,227,.92);
+    -webkit-backdrop-filter:saturate(1.4) blur(10px);
+    backdrop-filter:saturate(1.4) blur(10px);
+    border-bottom-color:var(--hair);
+}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){
+    .nav.stuck{background:var(--paper)}
+}
+
+/* ── hero with photograph ────────────────────────────── */
+.hero{
+    position:relative;overflow:hidden;display:flex;flex-direction:column;
+    min-height:clamp(520px,82svh,760px);
+    margin-top:calc(-1 * var(--navh));
+    padding-top:var(--navh);
+}
+.hero .shot{
+    position:absolute;inset:0;z-index:0;
+    background-image:var(--hero);
+    background-size:cover;background-position:center right;
+    filter:saturate(.92) contrast(1.02);
+}
+/* Warm wash so the headline stays readable over any photograph.
+   Horizontal on wide screens, vertical on phones. */
+.hero .wash{
+    position:absolute;inset:0;z-index:1;
+    background:linear-gradient(95deg,
+    var(--paper) 0%, var(--paper) 30%,
+    rgba(237,234,227,.86) 48%,
+    rgba(237,234,227,.28) 72%,
+    rgba(237,234,227,0) 100%);
+}
+.hero .inner{position:relative;z-index:2;margin-top:auto;padding:clamp(40px,8vw,90px) 0 clamp(30px,5vw,54px)}
+.hero h1{font-size:clamp(38px,7.2vw,84px);max-width:15ch;margin:18px 0 26px}
+.rot{display:inline-block;color:var(--accent);transition:opacity .45s ease}
+.rot.out{opacity:0}
+.hero .row{display:flex;gap:34px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap}
+.hero .lede{max-width:46ch}
+@media(max-width:820px){
+    .hero .wash{background:linear-gradient(180deg,
+    var(--paper) 0%, rgba(237,234,227,.55) 30%,
+    rgba(237,234,227,.88) 62%, var(--paper) 88%)}
+    .hero .shot{background-position:center 28%}
+}
+.credit{
+    position:absolute;right:var(--gut);bottom:14px;z-index:2;
+    font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);
+}
+
+.btn{
+    display:inline-block;font-family:var(--sans);font-size:14px;font-weight:500;
+    padding:14px 26px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);
+    border-radius:999px;transition:background .2s,color .2s,border-color .2s;
+}
+.btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.o{background:transparent;color:var(--paper)}
+.btn.o:hover{background:var(--ink);color:var(--paper)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+
+/* ── numbers ─────────────────────────────────────────── */
+.nums{display:flex;gap:clamp(28px,6vw,80px);flex-wrap:wrap;padding:34px 0;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
+.nums div{min-width:130px}
+.nums b{display:block;font-family:var(--serif);font-size:clamp(40px,5.6vw,62px);font-weight:300;line-height:1}
+.nums span{display:block;color:var(--soft);font-size:15px;margin-top:6px;max-width:20ch}
+
+section{padding:clamp(52px,8vw,96px) 0;scroll-margin-top:var(--navh)}
+.head{max-width:62ch;margin-bottom:40px}
+.head .tag{display:block;margin-bottom:14px}
+.head h2{margin-bottom:16px}
+
+/* ── calendar ────────────────────────────────────────── */
+.months{display:grid;gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.month{background:var(--paper);padding:28px clamp(20px,3vw,34px);display:grid;grid-template-columns:minmax(120px,180px) 1fr;gap:clamp(18px,4vw,44px);align-items:start}
+.month .m{font-family:var(--serif);font-size:clamp(26px,3.4vw,38px);line-height:1;color:var(--accent)}
+.month .m small{display:block;font-family:var(--sans);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-top:9px}
+.month h3{margin-bottom:8px}
+.month p{margin:0;color:var(--soft);font-size:16px;max-width:58ch}
+.month.last{background:var(--paper-2)}
+.month.last .m{color:var(--ink)}
+@media(max-width:680px){.month{grid-template-columns:1fr;gap:12px}}
+
+/* ── two columns ─────────────────────────────────────── */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(26px,4vw,56px)}
+.two h3{margin-bottom:10px}
+.two p{color:var(--soft);font-size:16px;margin:0}
+
+/* ── the hundred ─────────────────────────────────────── */
+.hundred{display:grid;grid-template-columns:repeat(20,1fr);gap:5px;margin:34px 0 16px}
+.hundred i{display:block;aspect-ratio:1;background:rgba(35,33,30,.09);border-radius:1px}
+.hundred i.on{background:var(--accent)}
+@media(max-width:640px){.hundred{grid-template-columns:repeat(10,1fr)}}
+.counting{display:flex;gap:20px;justify-content:space-between;flex-wrap:wrap;color:var(--soft);font-size:14px}
+
+/* ── follow ──────────────────────────────────────────── */
+.hash{font-family:var(--serif);font-size:clamp(30px,5.4vw,58px);color:var(--accent);display:block;margin:6px 0 18px}
+.handles{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.handles span{border:1px solid var(--hair);border-radius:999px;padding:7px 15px;font-size:14px}
+
+/* ── forms ───────────────────────────────────────────── */
+.forms{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:1px;background:var(--hair);border:1px solid var(--hair)}
+.form{background:var(--paper-2);padding:30px clamp(20px,3vw,32px)}
+.form h3{margin-bottom:9px}
+.form > p{color:var(--soft);font-size:15.5px;margin-bottom:22px}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:7px}
+.field input{width:100%;background:transparent;border:0;border-bottom:1px solid var(--hair);padding:8px 0;color:var(--ink);font-family:var(--sans);font-size:16.5px;font-weight:300}
+.field input:focus{outline:none;border-bottom-color:var(--accent)}
+.done{color:var(--accent);margin:0}
+.err{color:var(--accent);font-size:15px;margin:14px 0 0}
+
+footer{border-top:1px solid var(--hair);padding:56px 0 44px}
+footer .fw{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:34px}
+footer h2{font-size:clamp(24px,3.4vw,38px);max-width:18ch;margin-bottom:14px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:9px;color:var(--soft);font-size:15px}
+footer ul a:hover{color:var(--ink)}
+footer .t{font-size:12px;letter-spacing:.13em;text-transform:uppercase;color:var(--soft);margin-bottom:12px}
+.fine{margin-top:44px;padding-top:20px;border-top:1px solid var(--hair);color:var(--soft);font-size:13.5px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media(prefers-reduced-motion:reduce){*{transition-duration:.001ms!important;animation-duration:.001ms!important}}
