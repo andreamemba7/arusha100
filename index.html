@@ -6,6 +6,14 @@
 <title>Arusha 100 — a hundred pictures, given away on Christmas Eve</title>
 <meta name="description" content="Ten people spend October learning to photograph and November shooting Arusha. A hundred pictures are printed and hand-delivered on Christmas Eve.">
 <meta name="theme-color" content="#EDEAE3">
+<link rel="canonical" href="https://REPLACE-WITH-YOUR-DOMAIN/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Arusha 100 — a hundred pictures, given away on Christmas Eve">
+<meta property="og:description" content="Ten people learn to photograph in October and shoot Arusha in November. A hundred prints are hand-delivered on Christmas Eve.">
+<meta property="og:image" content="https://REPLACE-WITH-YOUR-DOMAIN/assets/hero.jpg">
+<meta property="og:locale" content="en_TZ">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
@@ -149,9 +157,8 @@
       <h2>Ten places, and an open list of names.</h2>
     </div>
     <div class="forms">
-      <form class="form" name="arusha100-student" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="arusha100-student">
-        <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+      <form class="form" data-form data-subject="Arusha 100 — student application">
+        <p class="hp"><label>Leave this empty <input name="botcheck" tabindex="-1" autocomplete="off"></label></p>
         <h3>I want one of the ten places</h3>
         <p>No camera, no experience, no fee. Applications close on 30th September 2026</p>
         <div class="field"><label for="s1">Your name</label><input id="s1" name="name" required></div>
@@ -160,9 +167,8 @@
         <button class="btn" type="submit">Send it</button>
       </form>
 
-      <form class="form" id="nominate" name="arusha100-nominate" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-        <input type="hidden" name="form-name" value="arusha100-nominate">
-        <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+      <form class="form" id="nominate" data-form data-subject="Arusha 100 — nomination">
+        <p class="hp"><label>Leave this empty <input name="botcheck" tabindex="-1" autocomplete="off"></label></p>
         <h3>Someone should get a picture</h3>
         <p>A person, a family, a small organization. Tell us what they have done for the people around them.</p>
         <div class="field"><label for="m1">Their name</label><input id="m1" name="who" required></div>
@@ -207,6 +213,6 @@
   </div>
 </footer>
 
-<script src="assets/script.js"></script>
+<script src="assets/script.js" defer></script>
 </body>
 </html>
