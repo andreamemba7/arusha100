@@ -35,7 +35,7 @@ document.getElementById('count').textContent = CHOSEN + ' of 100 chosen';
 
    Until the key is filled in the forms refuse to send and say so,
    rather than swallowing somebody's phone number.                  */
-const ACCESS_KEY = "PASTE-YOUR-ACCESS-KEY-HERE";
+const ACCESS_KEY = "75ec996d-dfb5-43d8-9fb0-a6728620c970";
 
 function say(form, cls, text){
     let n = form.querySelector('.note');
@@ -53,7 +53,7 @@ document.querySelectorAll('form[data-form]').forEach(f=>{
         if(f.querySelector('[name="botcheck"]').value) return;   // bot filled the hidden field
 
         if(!ACCESS_KEY || ACCESS_KEY.startsWith('PASTE')){
-            say(f, 'err', 'Not sent — this form has no access key yet. See the SETUP note in assets/script.js.');
+            say(f, 'err', 'Ooops! This form is not yet configured');
             return;
         }
 
